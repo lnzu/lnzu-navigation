@@ -1,0 +1,44 @@
+html{
+  /*background-color: pink;*/
+}
+
+body{
+	margin: 0;
+}
+.site_title{
+  margin-top: 0px;
+}
+
+#erro{
+  color: red;
+}
+
+.info{
+  position: relative;
+}
+
+.info>span{
+  position: relative;
+  top: 0px;
+  font-size: 16px;
+}
+
+.info>input{
+  border-radius: 0;
+  margin-top: 0px;
+  position: relative;
+  top: 0;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+#div_info_passwd{
+  margin-top: 20px;
+}
+
+.submit{
+  border-radius: 0;
+  border: 1px solid #000;
+  font-size: 16px;
+  margin-top: 10px;
+}

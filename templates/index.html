@@ -1,0 +1,79 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type="text/css" />
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}" type="text/javascript"></script>
+	
+	
+	<!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script> -->
+	<title>{{ title }}</title>
+</head>
+
+<body>
+	<form class="login_out" method="POST" action="">
+		<button class="login_out-bt" name="login_out" value="True" type="submit">登出</button>
+	</form>
+	
+	<div class="web-title">
+		<h2>{{ title }}</h2>
+	</div>
+	
+	<div class="search-box">
+		<input type="text" class="search-input" placeholder="search..."/>
+		<button class="search-button">搜索</button>
+		<svg t="1622553924262" class="search-select" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1012" width="50" height="50"><path d="M56.4207053 276.25057695c25.42295171-25.42295171 66.70982531-25.42295171 92.13277698 0L489.01765166 616.71474632c12.60978405 12.60978405 33.35491263 12.60978405 45.96469668 0L875.44651772 276.25057695c25.42295171-25.42295171 66.70982531-25.42295171 92.13277698 0s25.42295171 66.70982531 2e-8 92.13277705L604.13277701 731.82987171c-50.84590346 50.84590346-133.21626699 50.84590346-184.0621704 0L56.42070528 368.383354c-25.42295171-25.42295171-25.42295171-66.70982531 2e-8-92.13277705z" fill="#17abe3" p-id="1013"></path></svg>
+		
+		<!-- 展示建议搜索 -->
+		<ul class="suggest"></ul>
+		
+		<!-- 展示选择搜索引擎 -->
+		<ul class="s-engin">
+			<li id="baidu">百度</li>
+			<li id="biying">必应</li>
+			<li id="sougou">搜狗</li>
+			<li id="google">Goggle</li>
+			<li id="github">Github</li>
+		</ul>
+	</div>
+	
+	<div class="site-layout">
+		{% for i in sites %}
+		<div link='{{ i["link"] }}' id='{{ i["id"] }}' title="{{ i["title"] }}" icon='{{ i["icon"] }}' class="site-box">
+			<img class="site-del" src="{{ url_for('static', filename='svg/del.svg') }}"></img>
+			{% if i["icon"] | getType == 'text' %}
+				<div name='ss' class="site-icon-text">{{ i["title"] }}</div>
+			{% elif i["icon"] | getType == 'img' %}
+				<img class="site-icon-img" src='{{ i["icon"] }}' />
+			{% elif i["icon"] | getType == 'svg' %}
+				{{ i["icon"] | safe }}
+			{% endif %}
+			<div class="site-title">{{ i["title"] }}</div>
+		</div>
+		{% endfor %}
+		<div class="site-box-add">
+			<img class="site-add-icon" src="{{ url_for('static', filename='svg/xinzeng.svg') }}"></img>
+			<div class="site-add">新增</div>
+		</div>
+	</div>
+	
+	
+	<div class="up-de-layout">
+		<div class="info-div">
+			<span>标题: </span><input type="text" id="title"/>
+		</div>
+		<div class="info-div">
+			<span>链接: </span><input type="text" id="link"/>
+		</div>
+		<div class="info-div">
+			<span>图标: </span><input type="text" id="icon"/>
+		</div>
+		<button class="bt_submit">新增</button>
+		<img class="up-de-layout-close" src="{{ url_for('static', filename='svg/guanbi.svg') }}"></img>
+	</div>
+	
+	<!-- 导入js -->
+	<script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+</body>
+
+</html>

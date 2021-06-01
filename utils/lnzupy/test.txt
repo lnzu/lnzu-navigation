@@ -1,0 +1,6 @@
+user:
+  name: 'admin'
+  passworld: 'admin'
+  online_time: 86400
+site:
+  title: '大鼻子的小哥哥'
