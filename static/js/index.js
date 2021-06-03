@@ -16,8 +16,11 @@ function setHide() {
 	$('.site-box-add').hide();
 	$('.up-de-layout').hide();
 	$('.login_out').hide();
+	
+	$('#title').val('')
+	$('#link').val('')
+	$('#icon').val('')
 }
-
 setHide();
 
 $('html').dblclick(function () {
@@ -35,22 +38,27 @@ $('html').dblclick(function () {
 
 //删除功能
 $('.site-del').click(function () {
-	
-	$.ajax({
-		type: 'POST',
-		contetType: 'application/json',
-		url: '/delete',
-		data: {
-			'id': $(this).parent().attr('id')
-		},
-		success: function (result) {
-			alert(result)
-			window.location.reload()
-		},
-		error: function () {
-			alert('请求失败')
-		}
-	});
+	var r = confirm("确认删除此网站？")
+	if (r == true) {
+		$.ajax({
+			type: 'POST',
+			contetType: 'application/json',
+			url: '/delete',
+			data: {
+				'id': $(this).parent().attr('id')
+			},
+			success: function (result) {
+				alert(result)
+				window.location.reload()
+			},
+			error: function () {
+				
+			}
+		});
+		
+	} else {
+		setHide();
+	}
 })
 
 //图标点击功能
@@ -270,9 +278,8 @@ $('.s-engin>li').click(function () {
 });
 
 
-//点击按钮立即搜索
-$('.search-button').click(function () 
-{
+
+function Jump() {
 	var s_text = $('.search-input').val();
 	if (s_text == '') {
 		return
@@ -287,30 +294,20 @@ $('.search-button').click(function ()
 			window.location.replace('https://m.sogou.com/web/searchList.jsp?keyword='+s_text)
 		}else if (search_engin == 'biying') {
 			window.location.replace('https://www.bing.com/search?q='+s_text)
+		}else if (search_engin == 'translate') {
+			window.location.replace('https://fanyi.sogou.com/text?fr=default&keyword='+s_text+'&transfrom=auto&transto=zh-CHS&model=general')
 		}
-		
-		
 	}
+}
+
+//点击按钮立即搜索
+$('.search-button').click(function () {
+	Jump();
 });
 
 //搜索框输入内容时回车响应搜索
 $(document).keyup(function(event){  
 	if(event.keyCode ==13){  
-		var s_text = $('.search-input').val();
-		if (s_text == '') {
-			return
-		}else {
-			if (search_engin == 'baidu') {
-				window.location.replace('https://baidu.com/s?word='+s_text)
-			}else if (search_engin == 'github') {
-				window.location.replace('https://github.com/search?q='+s_text)
-			}else if (search_engin == 'google') {
-				window.location.replace('https://google.com/search?q='+s_text)
-			}else if (search_engin == 'sougou') {
-				window.location.replace('https://m.sogou.com/web/searchList.jsp?keyword='+s_text)
-			}else if (search_engin == 'biying') {
-				window.location.replace('https://www.bing.com/search?q='+s_text)
-			}
-		}
+		Jump();
 	}
-});   
+});

@@ -11,9 +11,9 @@ body{
 }
 
 .login_out-bt{
-	border: 1px solid #999;
+	border: none;
 	font-size: 16px;
-	background: grey;
+	background: #ff6369;
 	color: white;
 }
 
@@ -72,7 +72,7 @@ body{
 
 .suggest{
 	background: white;
-	padding: 5px 8px 5px 8px;
+	padding: 2px 8px 2px 8px;
 	width: calc(100% - 16px);
 	-webkit-box-shadow: rgba(0,0,0,0.1) 5px 5px 20px 2px;
 	box-shadow: rgba(0,0,0,0.1) 5px 5px 20px 2px;
@@ -93,7 +93,7 @@ body{
 .s-engin{
 	width: 100px;
 	background: white;
-	padding: 5px 8px 5px 8px;
+	padding: 2px 8px 2px 8px;
 	-webkit-box-shadow: rgba(0,0,0,0.1) 5px 5px 20px 2px;
 	box-shadow: rgba(0,0,0,0.1) 5px 5px 20px 2px;
 	position: absolute;
@@ -135,11 +135,7 @@ body{
 .site-icon-img,.site-add-icon{
 	width: 50px;
 	height: 50px;
-	-webkit-user-select:none;
-	-moz-user-select:none;
-	-ms-user-select:none;
-	user-select:none;
-	pointer-events:none;/* 禁止长按图片保存 */
+	
 }
 
 .site-add,.site-title{
