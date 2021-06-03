@@ -107,6 +107,8 @@ def getIconType(icon):
         return 'svg'
     elif re.match(r'(http|https):\/\/.*\.(img|png|jpeg)',icon):
         return 'img'
+    elif re.match(r'\/static\/',icon):
+        return 'img'
     else:
         return 'text'
 
